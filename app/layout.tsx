@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${fontSans.variable} font-sans antialiased`}>
         <Header></Header>
-        <main>{children}</main>
+        <main className="h-[590px] py-2 border-4">{children}</main>
         <Footer></Footer>
       </body>
     </html>
