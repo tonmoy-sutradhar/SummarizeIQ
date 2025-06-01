@@ -54,7 +54,7 @@ export default function HowItWorkSection() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto relative">
-        {steps.map((step, idx) => (
+        {/* {steps.map((step, idx) => (
           <div className="relative flex items-stretch">
             <StepItem key={idx} {...step}></StepItem>
             <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
@@ -63,6 +63,14 @@ export default function HowItWorkSection() {
                 strokeWidth={1}
                 className="text-blue-400"
               ></MoveRight>
+            </div>
+          </div>
+        ))} */}
+        {steps.map((step, idx) => (
+          <div key={idx} className="relative flex items-stretch">
+            <StepItem {...step} />
+            <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
+              <MoveRight size={32} strokeWidth={1} className="text-blue-400" />
             </div>
           </div>
         ))}
