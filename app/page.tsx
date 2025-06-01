@@ -1,11 +1,13 @@
-import { Button } from "@/components/ui/button";
+import HeroSection from "@/components/home/HeroSection";
 
 export default function Home() {
   return (
-    <div>
-      <Button variant={"outline"} size={"lg"}>
-        Shadcn UI
-      </Button>
+    <div className="relative w-full">
+      <HeroSection></HeroSection>
+      {/* <DemoSection></DemoSection> */}
+      {/* <HowItWorksSection></HowItWorksSection> */}
+      {/* <PricingSection></PricingSection> */}
+      {/* <CTASection></CTASection> */}
     </div>
   );
 }
