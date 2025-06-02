@@ -1,4 +1,5 @@
 import BgGradient from "@/components/common/BgGradient";
+import CtaSection from "@/components/home/CtaSection";
 import DemoSection from "@/components/home/DemoSection";
 import HeroSection from "@/components/home/HeroSection";
 import HowItWorkSection from "@/components/home/HowItWorkSection";
@@ -13,8 +14,8 @@ export default function Home() {
         <DemoSection></DemoSection>
         <HowItWorkSection></HowItWorkSection>
         <PricingSection></PricingSection>
+        <CtaSection></CtaSection>
       </div>
-      {/* <CTASection></CTASection> */}
     </div>
   );
 }
