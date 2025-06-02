@@ -30,7 +30,7 @@ export default function Header() {
       <div className="flex lg:justify-end gap-4 lg:flex-1 lg:items-cente">
         <SignedIn>
           <div className="flex gap-2 items-center">
-            <NavLink href={"/#upload"}>Upload a PDF</NavLink>
+            <NavLink href={"/upload"}>Upload a PDF</NavLink>
             <div>Pro</div>
             <SignedIn>
               <UserButton />
