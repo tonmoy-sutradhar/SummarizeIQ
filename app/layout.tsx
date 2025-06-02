@@ -3,6 +3,7 @@ import { Source_Sans_3 as FontSans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/common/header";
 import Footer from "@/components/common/Footer";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const fontSans = FontSans({
   variable: "--font-sans",
@@ -22,12 +23,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${fontSans.variable} font-sans antialiased`}>
-        <Header></Header>
-        <main className="">{children}</main>
-        {/* <Footer></Footer> */}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${fontSans.variable} font-sans antialiased`}>
+          <div className="relative flex min-h-screen flex-col">
+            <Header></Header>
+            <main className="">{children}</main>
+            <Footer></Footer>
+          </div>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
