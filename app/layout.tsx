@@ -24,15 +24,42 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={`${fontSans.variable} font-sans antialiased`}>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          suppressHydrationWarning
+          className={`${fontSans.variable} font-sans antialiased`}
+          cz-shortcut-listen="true"
+        >
           <div className="relative flex min-h-screen flex-col">
-            <Header></Header>
-            <main className="">{children}</main>
-            <Footer></Footer>
+            <Header />
+            <main>{children}</main>
+            <Footer />
           </div>
         </body>
       </html>
     </ClerkProvider>
   );
 }
+
+// export default function RootLayout({
+//   children,
+// }: Readonly<{
+//   children: React.ReactNode;
+// }>) {
+//   return (
+//     <ClerkProvider>
+//       <html lang="en" suppressHydrationWarning>
+//         <body
+//           suppressHydrationWarning
+//           className={`${fontSans.variable} font-sans antialiased`}
+//         >
+//           <div className="relative flex min-h-screen flex-col">
+//             <Header></Header>
+//             <main className="">{children}</main>
+//             <Footer></Footer>
+//           </div>
+//         </body>
+//       </html>
+//     </ClerkProvider>
+//   );
+// }

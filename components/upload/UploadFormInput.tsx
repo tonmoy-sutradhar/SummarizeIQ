@@ -9,7 +9,7 @@ interface UploadFormInputProps {
 export default function UploadFormInput({ onsubmit }: UploadFormInputProps) {
   return (
     <div>
-      <form action="" className="flex flex-col gap-6 onSubmit= {onSubmit}">
+      <form onSubmit={onsubmit} action="" className="flex flex-col gap-6 ">
         <div className="flex justify-end items-center gap-1.5">
           <Input
             id="file"

@@ -25,10 +25,13 @@ export default function UploadForm() {
     // validating the fields
     const validatedFields = schema.safeParse({ file });
 
+    console.log(validatedFields);
+
     if (!validatedFields.success) {
       console.log(
         validatedFields.error.flatten().fieldErrors.file?.[0] ?? "Invalid file"
       );
+      return;
     }
     // schema with zod
     // upload the file to uploadThing
