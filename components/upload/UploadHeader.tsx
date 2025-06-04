@@ -13,9 +13,7 @@ export default function UploadHeader() {
             className="text-blue-600 animate-pulse"
             style={{ width: "25px", height: "25px" }}
           />
-          <p className="text-base text-blue-500">
-            AI-Powered Content Creation Tonmoy
-          </p>
+          <p className="text-base text-blue-500">AI-Powered Content Creation</p>
         </Badge>
       </div>
 
