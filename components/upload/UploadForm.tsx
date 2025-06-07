@@ -29,11 +29,11 @@ export default function UploadForm() {
         description: err.message,
       });
     },
-    onUploadBegin: ({ file }) => {
+    // onUploadBegin: ({ file }) => {
+    //   console.log("upload has begun for", file);
+    // },
+    onUploadBegin: (file) => {
       console.log("upload has begun for", file);
-      // toast("Uploading PDF", {
-      //   description: `Started uploading ${file.name}`,
-      // });
     },
   });
 
