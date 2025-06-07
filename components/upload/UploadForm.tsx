@@ -31,9 +31,9 @@ export default function UploadForm() {
     },
     onUploadBegin: ({ file }) => {
       console.log("upload has begun for", file);
-      toast("Uploading PDF", {
-        description: `Started uploading ${file.name}`,
-      });
+      // toast("Uploading PDF", {
+      //   description: `Started uploading ${file.name}`,
+      // });
     },
   });
 
@@ -61,16 +61,23 @@ export default function UploadForm() {
       return;
     }
 
-    toast("📃 Processing PDF", {
-      description: "Hang tight! Our AI is reading through your document. ✨",
+    toast("📃 Uploading PDF...", {
+      description: "We are uploading your PDF",
     });
 
     // schema with zod
     // upload the file to uploadThing
     const resp = await startUpload([file]);
     if (!resp) {
+      toast.error("Something went wrong"),
+        {
+          description: "Please use a different file.",
+        };
       return;
     }
+    toast("📃 Processing PDF", {
+      description: "Hang tight! Our AI is reading through your document. ✨",
+    });
     // parse the pdf using lang chain
     // summarize the pdf using AI
     // Save the summary to the database
