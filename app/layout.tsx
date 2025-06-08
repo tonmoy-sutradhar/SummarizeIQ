@@ -42,26 +42,3 @@ export default function RootLayout({
     </ClerkProvider>
   );
 }
-
-// export default function RootLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-//   return (
-//     <ClerkProvider>
-//       <html lang="en" suppressHydrationWarning>
-//         <body
-//           suppressHydrationWarning
-//           className={`${fontSans.variable} font-sans antialiased`}
-//         >
-//           <div className="relative flex min-h-screen flex-col">
-//             <Header></Header>
-//             <main className="">{children}</main>
-//             <Footer></Footer>
-//           </div>
-//         </body>
-//       </html>
-//     </ClerkProvider>
-//   );
-// }
