@@ -3,6 +3,7 @@ import { z } from "zod";
 import UploadFormInput from "./UploadFormInput";
 import { useUploadThing } from "@/utils/uploadthing";
 import { toast } from "sonner";
+import { generatedPdfSummary } from "@/actions/UploadActions";
 
 const schema = z.object({
   file: z
@@ -20,8 +21,11 @@ const schema = z.object({
 export default function UploadForm() {
   const { startUpload, routeConfig } = useUploadThing("pdfUploader", {
     onClientUploadComplete: () => {
-      console.log("uploaded successfully!");
-      toast.success("PDF uploaded successfully!");
+      // console.log("uploaded successfully!");
+      // toast.success("PDF uploaded successfully!");
+      toast("📃 PDF uploaded successfully!", {
+        description: "See the magic ✨",
+      });
     },
     onUploadError: (err) => {
       console.log("error occurred while uploading", err);
@@ -79,6 +83,8 @@ export default function UploadForm() {
       description: "Hang tight! Our AI is reading through your document. ✨",
     });
     // parse the pdf using lang chain
+    const summary = await generatedPdfSummary(resp);
+    console.log({ summary });
     // summarize the pdf using AI
     // Save the summary to the database
     // redirect to the [id] summary page
