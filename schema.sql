@@ -14,9 +14,20 @@ CREATE TABLE users (
 );
 
 -- PDF Summaries table (for storing PDF processing results)
+-- CREATE TABLE pdf_summaries (
+--     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+--     user_id UUID REFERENCES users(id) NOT NULL,
+--     original_file_url TEXT NOT NULL,
+--     summary_text TEXT NOT NULL,
+--     status VARCHAR(50) DEFAULT 'completed',
+--     title TEXT,
+--     file_name TEXT,
+--     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+-- );
 CREATE TABLE pdf_summaries (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    user_id UUID REFERENCES users(id) NOT NULL,
+    user_id TEXT NOT NULL,
     original_file_url TEXT NOT NULL,
     summary_text TEXT NOT NULL,
     status VARCHAR(50) DEFAULT 'completed',
@@ -25,6 +36,7 @@ CREATE TABLE pdf_summaries (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
+
 
 -- Payments table
 CREATE TABLE payments (
@@ -52,10 +64,12 @@ CREATE TRIGGER update_users_updated_at
     BEFORE UPDATE ON users
     FOR EACH ROW
     EXECUTE FUNCTION update_updated_at_column();
+
 CREATE TRIGGER update_pdf_summaries_updated_at
     BEFORE UPDATE ON pdf_summaries
     FOR EACH ROW
     EXECUTE FUNCTION update_updated_at_column();
+    
 CREATE TRIGGER update_payments_updated_at
     BEFORE UPDATE ON Payments
     FOR EACH ROW

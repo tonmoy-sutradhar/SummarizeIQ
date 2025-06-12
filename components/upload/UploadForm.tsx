@@ -3,7 +3,10 @@ import { z } from "zod";
 import UploadFormInput from "./UploadFormInput";
 import { useUploadThing } from "@/utils/uploadthing";
 import { toast } from "sonner";
-import { generatedPdfSummary } from "@/actions/UploadActions";
+import {
+  generatedPdfSummary,
+  storePdfSummaryAction,
+} from "@/actions/UploadActions";
 import { useRef, useState } from "react";
 
 const schema = z.object({
@@ -100,17 +103,30 @@ export default function UploadForm() {
       const { data = null, message = null } = result || {};
 
       if (data) {
+        let storeResult: any;
         toast("📃 Saving PDF...", {
           description: "Hang tight! We are saving your summary!",
         });
-        formRef.current?.reset();
-        // if(data.summary){
+        // formRef.current?.reset();
+
         // save the summary to the database
-        // }
+        if (data.summary) {
+          storeResult = await storePdfSummaryAction({
+            summary: data.summary,
+            fileUrl: resp[0].serverData.file.url,
+            title: data.title,
+            fileName: file.name,
+          });
+
+          toast("✨ Summary Generated!", {
+            description:
+              "Your PDF has been successfully summarized and saved! ✨",
+          });
+
+          formRef.current?.reset();
+          // TODO: redirect to the [id] summary page
+        }
       }
-      // summarize the pdf using AI
-      // Save the summary to the database
-      // redirect to the [id] summary page
     } catch (error) {
       setIsLoading(false);
       console.error("Error occur.....??", error);
