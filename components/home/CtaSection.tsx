@@ -21,11 +21,11 @@ export default function CtaSection() {
               <Button
                 size={"lg"}
                 variant={"link"}
-                className="w-full min-[400px]:w-auto bg-linear-to-r from-blue-900 to-blue-500 hover:from-blue-500 hover:to-blue-900 hover:text-white text-white transition-all duration-300 "
+                className="group hover:no-underline w-full min-[400px]:w-auto bg-linear-to-r from-blue-900 to-blue-500 hover:from-blue-500 hover:to-blue-900 hover:text-white text-white transition-all duration-300 "
               >
                 <Link
                   href={"/#pricing"}
-                  className="flex items-center justify-center"
+                  className="flex items-center justify-center "
                 >
                   Get Started
                   <ArrowRight className="ml-2 h-4 w-4 animate-pulse"></ArrowRight>
