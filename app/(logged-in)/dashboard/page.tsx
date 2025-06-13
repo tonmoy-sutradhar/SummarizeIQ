@@ -1,4 +1,5 @@
 import BgGradient from "@/components/common/BgGradient";
+import SummaryCard from "@/components/summaries/summaryCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Plus } from "lucide-react";
 import Link from "next/link";
@@ -6,6 +7,15 @@ import React from "react";
 
 export default function DashboardPage() {
   const uploadLimit = 5;
+  const summaries = [
+    {
+      id: 1,
+      title: "Sous Soul",
+      created_at: "2025-01-30 20:53:10.756695+00",
+      summary_text: "description",
+      status: "Completed",
+    },
+  ];
   return (
     <main className="min-h-screen">
       <BgGradient className="from-emerald-200 via-teal-200 to-cyan-200"></BgGradient>
@@ -46,7 +56,12 @@ export default function DashboardPage() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 sm:px-0"></div>
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 sm:px-0">
+            {/* [...Array(uploadLimit)] */}
+            {summaries.map((summary, index) => (
+              <SummaryCard key={index} summary={summary}></SummaryCard>
+            ))}
+          </div>
         </div>
       </div>
     </main>
