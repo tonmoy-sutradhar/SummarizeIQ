@@ -34,6 +34,7 @@
 import BgGradient from "@/components/common/BgGradient";
 import SourceInfo from "@/components/summaries/sourceInfo";
 import SummaryHeader from "@/components/summaries/summaryHeader";
+import { SummaryViewer } from "@/components/summaries/summaryViewer";
 import { getSummaryById } from "@/lib/summaries";
 import { FileText } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -71,6 +72,7 @@ export default async function SummaryPage(props: {
 
                 <div className="relative mt-8 sm:mt-6 flex justify-center">
                   {/* <SummaryViewer summary={summary?.summary_text} /> */}
+                  <SummaryViewer summary={summary_text}></SummaryViewer>
                 </div>
               </div>
               {/* line */}
