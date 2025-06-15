@@ -52,7 +52,7 @@ export default function SummaryCard({ summary }: { summary: any }) {
       <Card className="relative h-full">
         <div className="absolute top-2 right-2">
           {/* delete button */}
-          <DeleteButton></DeleteButton>
+          <DeleteButton summaryId={summary.id}></DeleteButton>
         </div>
         <Link href={`summaries/${summary.id}`} className="block p-4 sm:p-6">
           <div className="flex flex-col gap-3 sm:gap-4">

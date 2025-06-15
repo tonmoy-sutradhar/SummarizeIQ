@@ -25,6 +25,7 @@ CREATE TABLE users (
 --     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 --     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 -- );
+-- PDF Summaries table (for storing PDF processing results)
 CREATE TABLE pdf_summaries (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     user_id TEXT NOT NULL,

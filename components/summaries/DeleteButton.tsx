@@ -10,12 +10,32 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-import { useState } from "react";
+import { useState, useTransition } from "react";
+import { toast } from "sonner";
+import { deleteSummaryAction } from "@/actions/SummaryAction";
 
-export default function DeleteButton() {
+interface DeleteButtonProps {
+  summaryId: string;
+}
+
+export default function DeleteButton({ summaryId }: DeleteButtonProps) {
   const [open, setOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
 
-  const handleDelete = async () => {};
+  const handleDelete = async () => {
+    startTransition(async () => {
+      // TODO: Delete summary
+      // await deleteSummary (summaryId)
+
+      const result = await deleteSummaryAction({ summaryId });
+
+      if (!result.success) {
+        toast.error("Failed to delete summary");
+      }
+
+      setOpen(false);
+    });
+  };
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
@@ -38,14 +58,14 @@ export default function DeleteButton() {
         <DialogFooter>
           <Button
             variant={"ghost"}
-            className="  cursor-pointer bg-gray-50 border border-gray-200 hover:text-gray-600 hover:bg-gray-100"
+            className="  cursor-pointer rounded-3xl bg-gray-50 border border-gray-200 hover:text-gray-600 hover:bg-gray-100"
             onClick={() => setOpen(false)}
           >
             Cancel
           </Button>
           <Button
             variant={"destructive"}
-            className=" bg-rose-600   cursor-pointer "
+            className=" bg-rose-600 rounded-3xl   cursor-pointer "
             onClick={handleDelete}
           >
             Delete
