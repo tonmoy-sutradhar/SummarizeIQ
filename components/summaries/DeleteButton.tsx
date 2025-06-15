@@ -68,7 +68,7 @@ export default function DeleteButton({ summaryId }: DeleteButtonProps) {
             className=" bg-rose-600 rounded-3xl   cursor-pointer "
             onClick={handleDelete}
           >
-            Delete
+            {isPending ? "Deleting..." : "Delete"}
           </Button>
         </DialogFooter>
       </DialogContent>

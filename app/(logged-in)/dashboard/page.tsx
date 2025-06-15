@@ -1,4 +1,5 @@
 import BgGradient from "@/components/common/BgGradient";
+import EmptySummaryState from "@/components/summaries/EmptyState";
 import SummaryCard from "@/components/summaries/summaryCard";
 import { Button } from "@/components/ui/button";
 import { GetSummaries } from "@/lib/summaries";
@@ -56,12 +57,16 @@ export default async function DashboardPage() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 sm:px-0">
-            {/* [...Array(uploadLimit)] */}
-            {summaries.map((summary, index) => (
-              <SummaryCard key={index} summary={summary}></SummaryCard>
-            ))}
-          </div>
+          {summaries.length === 0 ? (
+            <EmptySummaryState></EmptySummaryState>
+          ) : (
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 sm:px-0">
+              {/* [...Array(uploadLimit)] */}
+              {summaries.map((summary, index) => (
+                <SummaryCard key={index} summary={summary}></SummaryCard>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </main>
