@@ -1,27 +1,4 @@
-function parsePoint(point: string) {
-  const isNumbered = /^\d+\./.test(point);
-  const isMainPoint = /^\*/.test(point);
-
-  // Replace the Unicode property escape with a simpler detection
-  const emojiRegex = /[\u{1F300}-\u{1F9FF}]|[\u2600-\u26FF]/u;
-  const hasEmoji = emojiRegex.test(point);
-
-  const isEmpty = !point.trim();
-
-  return { isNumbered, isMainPoint, hasEmoji, isEmpty };
-}
-
-function parseEmojiPoint(content: string) {
-  const cleanContent = content.replace(/^[•\s-]+/, "").trim();
-  const matches = cleanContent.match(/(\p{Emoji}+)\s+(.*)/u);
-  if (!matches) return null;
-
-  const [_, emoji, text] = matches;
-  return {
-    emoji: emoji.trim(),
-    text: text.trim(),
-  };
-}
+import { parseEmojiPoint, parsePoint } from "@/utils/SummaryHelpers";
 
 const EmojiPoint = ({ point }: { point: string }) => {
   const { emoji, text } = parseEmojiPoint(point) ?? {};
@@ -64,8 +41,7 @@ export default function ContentSection({
   return (
     <div className="space-y-4">
       {points.map((point, index) => {
-        const { isNumbered, isMainPoint, hasEmoji, isEmpty } =
-          parsePoint(point);
+        const { isMainPoint, hasEmoji, isEmpty } = parsePoint(point);
 
         if (isEmpty) return null;
 
